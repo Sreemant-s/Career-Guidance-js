@@ -1,2 +1,20 @@
-# Career-Guidance-js
-This project is a simple AI-based career recommendation system developed using Python and Streamlit. Users select their skills through a web interface, and the system suggests suitable career options using predefined logical rules. It is designed for beginners to understand basic AI concepts and web application development.
+# Career Guidance System (JavaScript)
+
+A simple web application that recommends careers based on user skills using rule-based logic.
+
+## Features
+- Skill selection
+- Career recommendations
+- Responsive UI
+- JavaScript rule engine
+
+## Technologies
+- HTML
+- CSS
+- JavaScript
+
+## How to Run
+Open index.html in a browser.
+
+## Author
+S. Sreemant (Unified Mentor Internship)

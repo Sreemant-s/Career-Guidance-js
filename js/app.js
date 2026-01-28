@@ -1,39 +1,65 @@
-body{
-  font-family:Arial;
-  background:#eef2ff;
-  padding:20px;
+function evaluate(){
+  let answers = [
+    getVal("q1"),
+    getVal("q2"),
+    getVal("q3")
+  ];
+
+  if(answers.includes(null)){
+    msg("Please answer all questions");
+    return;
+  }
+
+  let tech=0,bio=0,comm=0;
+
+  answers.forEach(a=>{
+    if(a==="tech") tech++;
+    if(a==="bio") bio++;
+    if(a==="comm") comm++;
+  });
+
+  let career="", colleges="", percent="", image="";
+
+  if(tech>=2){
+    career="Engineering / IT";
+    colleges="IITs, NITs, VIT, SRM";
+    percent="Minimum 75% in PCM";
+    image="https://via.placeholder.com/80?text=IT";
+  }
+  else if(bio>=2){
+    career="Medical";
+    colleges="AIIMS, Govt Medical Colleges";
+    percent="Minimum 80% in PCB";
+    image="https://via.placeholder.com/80?text=MED";
+  }
+  else{
+    career="Commerce & Management";
+    colleges="IIMs, Christ University, DU";
+    percent="Minimum 60% in Commerce";
+    image="https://via.placeholder.com/80?text=BIZ";
+  }
+
+  showResult(career,colleges,percent,image);
 }
 
-h1{text-align:center}
-
-.card{
-  background:#fff;
-  padding:15px;
-  margin:15px auto;
-  max-width:700px;
-  border-radius:8px;
+function getVal(q){
+  let r=document.getElementsByName(q);
+  for(let i of r) if(i.checked) return i.value;
+  return null;
 }
 
-.q{margin-bottom:10px}
-
-button{
-  padding:10px;
-  background:#2563eb;
-  color:white;
-  border:none;
-  cursor:pointer;
+function showResult(career,colleges,percent,image){
+  let html = `
+  <div class="result-box">
+    <h3>Recommended Career: ${career}</h3>
+    <img src="${image}">
+    <p><b>Suggested Colleges:</b> ${colleges}</p>
+    <p><b>Required Percentage:</b> ${percent}</p>
+  </div>`;
+  document.getElementById("result").innerHTML=html;
 }
 
-.result-box{
-  background:#f1f5f9;
-  padding:10px;
-  margin-top:10px;
-  border-radius:6px;
-}
-
-img{
-  width:80px;
-  display:block;
-  margin:10px 0;
+function msg(t){
+  document.getElementById("msg").innerText=t;
 }
 
